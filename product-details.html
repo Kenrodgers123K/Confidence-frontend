@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Product Details - Confidence Supplies Ltd</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed information about a specific product from Confidence Supplies Ltd.">
+    <meta name="keywords" content="product details, industrial equipment, steam products, plumbing solutions, quality supplies">
+    <meta name="author" content="Confidence Supplies Ltd">
+  
+
+    <!-- Original CSS for site-wide consistency -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Latest Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom styling for this page -->
+    <style>
+        /*
+        * New, modern color palette using CSS variables for easy theming
+        */
+        :root {
+            --primary-color: #1e3a8a; /* A deep, confident blue */
+            --primary-light: #2563eb;
+            --accent-color: #f59e0b; /* A warm orange for highlights */
+            --background-light: #f3f4f6; /* A very light gray */
+            --background-dark: #e5e7eb;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --discount-color: #ef4444; /* A classic red for discounts */
+
+            /* New variables for the button's complex design */
+            --btn-bg-start: #1c2b53; /* Dark blue start */
+            --btn-bg-end: #1a4d95; /* Lighter blue end */
+            --btn-border: #3b82f6; /* Blue border */
+            --btn-shadow: #2563eb; /* Blue glow */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            @apply text-gray-800;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .header-content {
+            @apply flex justify-between items-center w-full;
+        }
+
+        /* Styling for the back button */
+        .back-button {
+            @apply flex items-center bg-white text-gray-700 px-4 py-2 rounded-full font-medium transition-transform transform hover:scale-105 shadow-md;
+        }
+
+        .back-button i {
+            @apply mr-2 text-primary-light;
+        }
+
+        /* Discount badge with a modern look and animation */
+        .discount-badge {
+            display: inline-block;
+            background-color: var(--discount-color);
+            color: white;
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 700; /* font-bold */
+            padding: 0.25rem 0.5rem; /* px-2 py-1 */
+            border-radius: 9999px; /* rounded-full */
+            margin-left: 0.75rem; /* ml-3 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* Image zoom effect with a smoother transition */
+        .main-image {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease-in-out;
+            cursor: zoom-in;
+            @apply rounded-xl shadow-lg;
+        }
+
+        .main-image.zoomed {
+            transform: scale(1.6);
+            cursor: zoom-out;
+            z-index: 10; /* Ensures the zoomed image is on top */
+            position: relative; /* To make z-index work */
+        }
+
+        /* Main product detail card styling */
+        .product-detail-container {
+            @apply bg-white p-6 md:p-10 rounded-3xl shadow-xl flex flex-col md:flex-row gap-8;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ================================================= */
+        /* Complex and Dynamic Button Styling                */
+        /* ================================================= */
+       /* ============================= */
+        /* Contact Button Modern Styling */
+        /* ============================= */
+        .contact-button {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(135deg, #2563eb, #1e3a8a); /* blue gradient */
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 26px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Glow animation */
+        .contact-button::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: all 0.6s ease;
+        }
+
+        /* Hover effects */
+        .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+        }
+        .contact-button:hover::before {
+            left: 100%; /* sheen slides across */
+        }
+
+        /* Inner content */
+        .contact-button-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2; /* above sheen */
+        }
+
+        .contact-button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Ripple effect on click */
+        .contact-button:active {
+            transform: scale(0.97);
+        }
+        /* ============================= */
+        /* ============================= */
+        /* Product Detail Image Styling  */
+        /* ============================= */
+        #detail-product-image {
+            max-width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            border-radius: 20px;
+            background: #f9fafb;
+            padding: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Hover zoom: Lift instead of overlap */
+        #detail-product-image:hover {
+            transform: scale(1.08) translateY(-6px); /* lift up slightly */
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+            filter: brightness(1.05);
+            z-index: 5; /* stays above its container only, not overlapping text */
+        }
+
+        /* Remove old zoomed overlap mode */
+        #detail-product-image.zoomed {
+            transform: none;
+            cursor: pointer;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            #detail-product-image {
+                max-height: 280px;
+                border-radius: 12px;
+                padding: 8px;
+            }
+        }
+
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            #detail-product-image {
+                max-height: 280px;
+                border-radius: 12px;
+                padding: 8px;
+            }
+        }
+
+
+
+        
+        /* Keyframe animation for the pulsing glow */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 0 15px 5px rgba(37, 99, 235, 0.7); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+        }
+
+
+        /* List style with a distinct color */
+        #detail-product-specs li::marker {
+            color: var(--accent-color);
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+        
+    </style>
+</head>
+<body class="font-sans">
+    <header>
+        <div class="logo-brand-container">
+            <button onclick="history.back()" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <a href="product-details.html"></a>
+            <span class="flip-animation">Confidence</span>
+        </div>
+        
+    </header>
+    
+    <main class="min-h-screen py-12">
+        <section class="product-detail-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Message area for loading or errors -->
+                <p id="product-not-found-message" class="text-center font-semibold text-red-600 mb-6" style="display: none;"></p>
+
+                <!-- Main product detail content -->
+                <div id="product-detail-content" class="product-detail-container" style="display: none;">
+                    <!-- Product Image Section -->
+                    <div class="flex-1 max-w-full ">
+                        <img id="detail-product-image" src="https://placehold.co/600x400?text=Product+Image" alt="Product Image" class="main-image w-full h-auto object-cover transition-transform">
+                    </div>
+
+                    <!-- Product Info Section -->
+                    <div class="flex-1">
+                        <h1 id="detail-product-name" class="text-4xl font-bold text-gray-800 mb-2">Product Name</h1>
+                        
+                        <div class="mb-4 text-gray-600 space-y-1">
+                            <p class="detail-category"><strong class="font-semibold">Category:</strong> <span id="detail-product-category"></span></p>
+                            <p class="detail-subcategory text-sm"><strong>Subcategory:</strong> <span id="detail-product-subcategory">N/A</span></p>
+                        </div>
+                        
+                        <p class="detail-description text-gray-700 leading-relaxed mb-6"><span id="detail-product-description"></span></p>
+
+                        <!-- Price & Stock Info -->
+                        <div class="price-info mb-6 flex items-baseline">
+                            <span class="current-price text-3xl font-bold text-primary-color">Ksh <span id="detail-product-price">0.00</span></span>
+                            
+                            <span class="original-price line-through text-gray-500 ml-4" id="detail-product-original-price" style="display: none;"></span>
+                            
+                            <span class="discount-badge" id="detail-product-discount" style="display: none;"></span>
+                        </div>
+                        <p class="stock-info text-sm text-gray-500 mb-8">Availability: <span id="detail-product-quantity">0</span> in stock</p>
+
+                        <!-- Specifications List -->
+                        <div class="product-specs-section bg-gray-50 p-6 rounded-lg mb-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Specifications:</h3>
+                            <ul id="detail-product-specs" class="list-disc list-inside text-gray-700 space-y-2"></ul>
+                        </div>
+                        
+                        <!-- Action Button -->
+                        <button class="contact-button">
+                            <a class="contact-button" href="https://wa.me/254724253942" target="_blank">
+                                <span class="contact-button-content">
+                                    <i class="fas fa-paper-plane contact-button-icon"></i>
+                                    Contact for Quote
+                                </span>
+                            </a>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+    <script src="js/main.js"></script>
+    <script src="js/productdetails.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/dymolpiz/backend-app"
+PassengerBaseURI "/"
+PassengerNodejs "/home/dymolpiz/nodevenv/backend-app/20/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv CLOUDINARY_API_KEY 584731449624842
+SetEnv CLOUDINARY_API_SECRET n-2bZvThG5sjOVsnCxXPPAdxOFQ
+SetEnv CLOUDINARY_CLOUD_NAME dfeqcilzw
+SetEnv JWT_SECRET 635804e262d5c86a617f655909b9957eaaf3e925d5f85a186458438ebaab695e6bae3c3e13ec442d5f6138ff98a1133c7bde79a9a29b2897bf2fe646124e869b
+SetEnv MONGODB_URI mongodb+srv://admin:Hj4gWGzkcE9mHmuK@confidencedatabase.erlbsss.mongodb.net/?retryWrites=true&w=majority&appName=ConfidenceDataBase
+SetEnv PORT 5000
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

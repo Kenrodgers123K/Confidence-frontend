@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Product Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-brand-container">
+           <h3 class="flip-animation">Admin</h3>
+            <nav>
+                <button id="logoutButton" class="btn btn-secondary" align-items="margin-right">Logout</button>
+            </nav>
+        </div>
+    </header>
+        <div class="search-container">
+        <input type="text" id="adminSearchInput" placeholder="Search products...">
+        <button id="adminSearchButton" class="btn btn-primary">Search</button>
+        </div>
+   
+    <main class="admin-main-content">
+        <section class="admin-section">
+            <div class="container">
+                <h2>Product Management</h2>
+                <p id="adminFormMessage" class="submission-message"></p>
+
+                <div class="form-container">
+                    <h3>Add New Product</h3>
+                    <form id="product-form" class="product-form">
+                        <div class="form-group">
+                            <label for="productName">Product Name:</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Description:</label>
+                            <textarea id="productDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Price (Ksh):</label>
+                            <input type="number" id="productPrice" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productOriginalPrice">Original Price (Ksh, Optional for discount):</label>
+                            <input type="number" id="productOriginalPrice" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Quantity in Stock:</label>
+                            <input type="number" id="productQuantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Category:</label>
+                            <select id="productCategory" required>
+                                <option value="">Select a Category</option>
+                                <option value="Industrial Equipment">Industrial Equipment</option>
+                                <option value="Steam Products">Steam Products</option>
+                                <option value="Plumbing Solutions">Plumbing Solutions</option>
+                                <option value="General Supplies">General Supplies</option>
+                                <option value="Electrical Components">Electrical Components</option>
+                                <option value="Mechanical Components">Mechanical Components</option>
+                                <option value="Safety Equipment">Safety Equipment</option>
+                                <option value="Tools & Hardware">Tools & Hardware</option>
+                                <option value="Pneumatic Systems">Pneumatic Systems</option>
+                                <option value="Laboratory Equipment">Laboratory Equipment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSubCategory">Subcategory:</label>
+                            <input type="text" id="productSubCategory" placeholder="e.g., Valves, Pumps">
+                        </div>
+                        <div class="form-group">
+                            <label for="productSpecs">Specifications (comma-separated):</label>
+                            <input type="text" id="productSpecs" placeholder="e.g., Color: Red, Size: M">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Product Image:</label>
+                            <input type="file" id="productImage" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+
+                <div class="products-list-container">
+                    <h3>Existing Products</h3>
+                    <p id="no-admin-products-message" class="info-message" style="display: none;">No products found in the database.</p>
+                    <ul id="admin-product-list" class="product-list">
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <div id="editProductModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeEditModal">&times;</span>
+                <h3>Edit Product</h3>
+                <p id="editFormMessage" class="submission-message"></p>
+                <form id="editProductForm" class="product-form">
+                    <input type="hidden" id="editProductId">
+                    <div class="form-group">
+                        <label for="editProductName">Product Name:</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductDescription">Description:</label>
+                        <textarea id="editProductDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductPrice">Price (Ksh):</label>
+                        <input type="number" id="editProductPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductOriginalPrice">Original Price (Ksh, Optional):</label>
+                        <input type="number" id="editProductOriginalPrice" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductQuantity">Quantity in Stock:</label>
+                        <input type="number" id="editProductQuantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductCategory">Category:</label>
+                        <select id="editProductCategory" required>
+                             <option value="">Select a Category</option>
+                            <option value="Industrial Equipment">Industrial Equipment</option>
+                            <option value="Steam Products">Steam Products</option>
+                            <option value="Plumbing Solutions">Plumbing Solutions</option>
+                            <option value="General Supplies">General Supplies</option>
+                            <option value="Electrical Components">Electrical Components</option>
+                            <option value="Mechanical Components">Mechanical Components</option>
+                            <option value="Safety Equipment">Safety Equipment</option>
+                            <option value="Tools & Hardware">Tools & Hardware</option>
+                            <option value="Pneumatic Systems">Pneumatic Systems</option>
+                            <option value="Laboratory Equipment">Laboratory Equipment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductSubCategory">Subcategory:</label>
+                        <input type="text" id="editProductSubCategory" placeholder="e.g., Valves, Pumps">
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductSpecs">Specifications (comma-separated):</label>
+                        <input type="text" id="editProductSpecs" placeholder="e.g., Color: Red, Size: M">
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductImage">New Product Image (Optional):</label>
+                        <input type="file" id="editProductImage" accept="image/*">
+                        <small>Current Image:</small><br>
+                        <img id="currentProductImage" src="" alt="Current Product Image" style="max-width: 100px; max-height: 100px; margin-top: 10px; border-radius: 5px;">
+                        <input type="hidden" id="currentImageUrl"> 
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-admin"></span> Admin Panel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>   
+    <script src="js/auth.js"></script>   
+    <script src="js/admin.js"></script>  
+</body>
+</html>

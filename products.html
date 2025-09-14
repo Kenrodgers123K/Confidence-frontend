@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Products - Confidence Supplies Ltd</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our full range of industrial products and supplies.">
+    <meta name="keywords" content="industrial products, steam products, bearings, v-belts, plumbing, machinery, supplies">
+    <meta name="author" content="Confidence Supplies Ltd">
+    <link rel="icon" href="confidencelogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        * Best Customer-Appealing CSS
+        * This stylesheet introduces a modern, clean, and professional design
+        * using a refined color palette, improved typography, and subtle effects.
+        * It's designed to make the site look more polished and trustworthy.
+        */
+        :root {
+            --primary-color: #008080; /* Teal */
+            --secondary-color: #eb7608; /* Orange */
+            --accent-color: #07cab0; /* Light Teal */
+            --background-light: #f9f9f9;
+            --background-lighter: #e0f7fa;
+            --text-dark: #333;
+            --text-medium: #555;
+            --text-light: #fff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+        }
+
+        .product-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image-container img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-category {
+            font-size: 0.875rem;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .product-original-price {
+            font-size: 1rem;
+            color: var(--text-medium);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #006666;
+            transform: translateY(-2px);
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pagination-btn {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border-radius: 9999px;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background-color: #cbd5e1;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-button:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased">
+    <header class="py-4 shadow-sm bg-white">
+        <div class="container flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-teal-700">
+                <i class="fas fa-arrow-left"></i>
+                <span class="hidden sm:inline">Back </span>
+            </a>
+            
+           
+        </div>
+    </header>
+
+    <main class="py-12">
+        <div class="container">
+            <h1 id="products-section-title" class="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-gray-900">All Products</h1>
+            
+            <section>
+                <div id="product-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 md:gap-8">
+                    <p id="no-products-message" class="text-center w-full col-span-full font-semibold text-gray-500 hidden">No products found.</p>
+                </div>
+            </section>
+
+            <div id="productPaginationControls" class="pagination-container">
+                <button id="prevPageBtn" class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                <span id="page-info" class="text-lg font-semibold text-gray-700">Page 1 of 1</span>
+                <button id="nextPageBtn" class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+                        <!-- WITH THE NEW CODE BELOW -->
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <div class="container">
+            <p>&copy; 2024 Confidence Supplies Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+    <script  src="js/auth.js"></script>
+    <script  src="js/products.js"></script>
+    <script  src="js/main.js"></script>
+    <script  src="js/products-details.js"></script>
+    
+</body>
+</html>

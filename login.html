@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login </title>
+    <!-- Link to your main CSS file for consistent styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Specific styles for the login page to center the form */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            background-color: var(--background-lighter); /* Consistent background */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .login-container {
+            background-color: var(--form-bg); /* Using CSS variable */
+            padding: 40px;
+            border-radius: var(--border-radius-md); /* Using CSS variable */
+            box-shadow: 0 8px 30px var(--shadow-color); /* Using CSS variable */
+            width: 100%;
+            max-width: 450px; /* Max width for the login form */
+            text-align: center;
+            border: 1px solid var(--border-color); /* Using CSS variable */
+        }
+
+        .login-container h2 {
+            color: var(--primary-color); /* Using CSS variable */
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-medium); /* Using CSS variable */
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: calc(100% - 24px); /* Account for padding */
+            padding: 12px;
+            border: 1px solid var(--form-border); /* Using CSS variable */
+            border-radius: var(--border-radius-sm); /* Using CSS variable */
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: var(--form-focus-border); /* Using CSS variable */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Consistent focus ring */
+        }
+
+        .login-form button {
+            background-color: var(--primary-color); /* Using CSS variable */
+            color: var(--text-light); /* Using CSS variable */
+            padding: 12px 25px;
+            border: none;
+            border-radius: var(--border-radius-lg); /* Using CSS variable */
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%; /* Full width button */
+            margin-top: 20px;
+            box-shadow: 0 2px 5px var(--shadow-color); /* Consistent shadow */
+        }
+
+        .login-form button:hover {
+            background-color: var(--secondary-color); /* Using CSS variable */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-color); /* Enhanced shadow */
+        }
+
+        /* Message area for login feedback */
+        #loginMessage {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.5s ease-in-out;
+        }
+        /* Using CSS variables for alert colors */
+        #loginMessage.success { background-color: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-text); opacity: 1; }
+        #loginMessage.error { background-color: var(--error-bg); color: var(--error-text); border: 1px solid var(--error-text); opacity: 1; }
+        #loginMessage.info { background-color: var(--info-bg); color: var(--info-text); border: 1px solid var(--info-text); opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-brand-container" style="justify-content: center; margin-bottom: 20px;">
+            <h3 class="flip-animation" style="font-size: 1.8em;">Admin</h3>
+        </div>
+        <h2>Admin Login</h2>
+        <!-- THIS IS THE MESSAGE AREA -->
+        <p id="loginMessage" class="submission-message"></p>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required autocomplete="current-password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- IMPORTANT: Order matters! main.js MUST be loaded before auth.js -->
+    <script src="js/main.js"></script>   <!-- Contains the showAlert function -->
+    <script src="js/auth.js"></script>   <!-- Uses the showAlert function -->
+    <script src="js/products.js"></script>
+</body>
+</html>
